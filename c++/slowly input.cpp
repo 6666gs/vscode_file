@@ -19,7 +19,7 @@ int main()
 
     string o = "____________";   //content you want to delete
     Sleep(time);
-    for (i = 0; i < o.size();i++)   //é€€æ ¼
+    for (i = 0; i < o.size();i++)   //»ØÍË
     {
 
     cout << "\b \b";
@@ -27,8 +27,8 @@ int main()
 
     }
     cin >> a;
-    if (a == "yun")             //æ¯”å¯¹å¯†ç 
-    {    for (i = 0; i < 3;i++)   //ç¼“å†²
+    if (a == "yun")             //ÃÜÂë±È¶Ô
+    {    for (i = 0; i < 3;i++)   //»º³å
     {
 
     cout << "` ";
