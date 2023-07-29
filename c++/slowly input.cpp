@@ -4,6 +4,7 @@
 #include <windows.h>
 int main()
 {
+    
     using namespace std;
     string a;
     const int time = 500;
@@ -19,7 +20,7 @@ int main()
 
     string o = "____________";   //content you want to delete
     Sleep(time);
-    for (i = 0; i < o.size();i++)   //ªÿÕÀ
+    for (i = 0; i < o.size();i++)   //ÔøΩÔøΩÔøΩÔøΩ
     {
 
     cout << "\b \b";
@@ -27,8 +28,8 @@ int main()
 
     }
     cin >> a;
-    if (a == "yun")             //√‹¬Î±»∂‘
-    {    for (i = 0; i < 3;i++)   //ª∫≥Â
+    if (a == "yun")             //ÔøΩÔøΩÔøΩÔøΩ»∂ÔøΩ
+    {    for (i = 0; i < 3;i++)   //ÔøΩÔøΩÔøΩÔøΩ
     {
 
     cout << "` ";
