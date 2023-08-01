@@ -31,6 +31,9 @@
 
 > markdown采用的渲染依据可能与缩进有关，因此需要将代码的层级划分清晰，才可以有清晰的代码渲染。
 
+
+---
+
 ### 3、加黑加斜体无法同时出现
 
 **问题：**
@@ -57,7 +60,7 @@
 在atom-light.css文件中加入（因为默认用的是atom-light.css模板）
 ```
 html body img[alt="10%"] {width: 10%;} //10%为当前显示窗口完整宽度的10%
-html body img[alt="20%"] {width: 20%;}
+html body img[alt="20%"] {width: 20%;} //alt即描述语
 html body img[alt="30%"] {width: 30%;}
 html body img[alt="40%"] {width: 40%;}
 html body img[alt="50%"] {width: 50%;}
@@ -67,5 +70,5 @@ html body img[alt="80%"] {width: 80%;}
 html body img[alt="90%"] {width: 90%;}
 
 ```
-即可
-![](picture/2023-08-02-02-22-20.png)
+即可。如图：
+![60%](picture/2023-08-02-02-22-20.png)
