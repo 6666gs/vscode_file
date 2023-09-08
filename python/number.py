@@ -5,7 +5,6 @@ def number_jia(a,b):
         a (_type_): _description_
         b (_type_): _description_
     """
-    
     return a+b
 
 MIN=0;
