@@ -79,3 +79,6 @@ html body img[alt="90%"] {width: 90%;}
 ```
 即可。如图：
 ![50%](picture/2023-08-02-02-22-20.png)
+---
+### 6、预览格式中高亮内容可以显示，输出pdf中没有高亮内容
+看[网址](https://blog.csdn.net/RP123123123/article/details/118113026)
