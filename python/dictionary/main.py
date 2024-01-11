@@ -1,7 +1,6 @@
 import dictionary as dic
 
 date='23/12/14'
-date.replace('/','\/')
 
 content=dic.read_from_date(date)
 

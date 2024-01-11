@@ -41,6 +41,7 @@ def filter_string(text):
 
 def read_from_date(date):
     filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
+    date.replace('/','\/')
     lines=[1]
     with open(filename, 'r') as file:
         line = file.readline()
