@@ -1,6 +1,6 @@
 import dictionary as dic
 
-date='23/12/14'
+date='24/1/9'
 
 content=dic.read_from_date(date)
 
