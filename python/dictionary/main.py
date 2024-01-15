@@ -1,11 +1,43 @@
-import dictionary as dic
 from colorama import init,Fore
-import date as da
 import os
+
+import dictionary as dic
+import date as da
+import file as fi
+
+'''
+发现如果from file import filename时
+filename只能读取使用，无法修改
+import file后才可以
+'''
 
 init(autoreset=True)    #字体颜色初始化
 
+
+
 while True:
+    
+    file_exist=fi.file_check();
+    print(file_exist)
+    if file_exist==1:
+        
+        fi.update_filename(os.path.join(os.path.dirname(__file__),'英语单词记录.md'))
+    elif isinstance(file_exist,str):
+        fi.update_filename(file_exist)
+    else:
+        print('单词记录文件缺失！！\n请补充单词文件绝对路径\n')
+        new_dir=input('单词文件绝对路径：')
+        word_file_name=os.path.join(os.path.dirname(__file__),'单词路径.txt')
+        with open(word_file_name, 'w') as file:
+            file.write(new_dir)
+        fi.update_filename(new_dir)     #更新全局变量
+        if os.path.exists(fi.filename):
+            pass
+        else:
+            print('文件路径不合法，请重新输入！')
+            continue
+    
+    
     years=da.get_date_content()
     num=len(years)
     os.system('cls')

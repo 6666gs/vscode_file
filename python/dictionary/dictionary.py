@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import re
 
-
-filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
+import file as fi
+#filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
 '''
 得到word的含义
 首先搜索单词含义
@@ -71,7 +71,7 @@ def read_from_date(date):            #获取date日期中的单词名单，输�
     
     date.replace('/','\/')
     lines=[1]
-    with open(filename, 'r') as file:
+    with open(fi.filename, 'r') as file:
         line = file.readline()
         on=0
         while line:

@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import re
 
-
-filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
+import file as fi
+#filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
 
 
 class month:
@@ -30,7 +30,10 @@ def get_date_content():            #获取date日期中的单词名单，输出�
     num_year=0
     num_month=0
     num_day=0
-    with open(filename, 'r') as file:
+    
+    
+    print(fi.filename)
+    with open(fi.filename, 'r') as file:
         line = file.readline()
         
         while line:
@@ -51,19 +54,3 @@ def get_date_content():            #获取date日期中的单词名单，输出�
             
             line = file.readline() 
     return years
-
-
-'''years.append(year('23'))
-years[0].months.append(month('23/2'))
-years[0].months[0].days.append('23/2/12')
-print(years[0].name)
-print(years[0].months[0].name)
-print(years[0].months[0].days[0])'''
-
-'''years=get_date_content()
-for i in range(len(years)):
-    print(years[i].name)
-    for p in range(years[i].months_num):
-        print(years[i].months[p].name)
-        for o in range(years[i].months[p].days_num):
-            print(years[i].months[p].days[o])'''
