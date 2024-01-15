@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 
-
+filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
 '''
 得到word的含义
 首先搜索单词含义
@@ -16,11 +16,6 @@ import re
 
 输出格式：列表：[word,含义的数量,含义1,含义2,...]
 '''
-
-
-
-
-
 def get_CN(word):
     root_url = 'https://www.youdao.com/result?word='
     url = root_url +  word + '&lang=en' # 拼接URL
@@ -67,39 +62,35 @@ def get_CN(word):
 def filter_string(text):             #过滤text内容
     filtered_text=re.sub('\d*',"",text)                  #过滤任意长度数字
     filtered_text=re.sub('\s*\.\s*',"",filtered_text)    #过滤任意长度空格+.+任意长度空格
+    filtered_text=filtered_text.strip()
     filtered_text=re.sub(r'\n',"",filtered_text)         #过滤掉\n
     #filtered_text=re.sub('\s',"",text)
     return filtered_text
 
 def read_from_date(date):            #获取date日期中的单词名单，输出为列表
-    filename='E:/vscode_file/vscode_file/markdown/英语学习/词汇记录.md'
+    
     date.replace('/','\/')
     lines=[1]
     with open(filename, 'r') as file:
         line = file.readline()
         on=0
         while line:
-            
-            if re.match('\w*###\s'+date, line) and on == 0:
-                #print('匹配到对应日期')
+            #匹配到对应日期
+            if re.match('###\s'+date, line) and on == 0:
                 on=1
-            
-            elif  (re.match('\w*###\w*', line) or re.match('\w*##\w*', line) or re.match('\w*#\w*', line))  and on == 1:
-                #print('匹配到下一个日期')
+            #匹配到下一个日期或者分割横线
+            elif  (re.match('###\s', line) or re.match('##\s', line) or re.match('#\s', line) or re.match('---', line) )  and on == 1:
                 on=0
                 break
             
-            if re.match('\w*###\s'+date, line) is None and on == 1:            
-                lines.append(filter_string(line))      #进行过滤
+            if re.match('###\s'+date, line) is None and on == 1:            
+                lines.append(filter_string(line))      
             
             line = file.readline()
-
-
-
     del lines[0]
     for o in range(len(lines)):
         if lines[o]== '':
             del lines[o]
             
-    print(lines)  
+    #print(lines)  
     return lines
