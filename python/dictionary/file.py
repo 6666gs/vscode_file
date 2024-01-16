@@ -1,6 +1,12 @@
 import os
-
+import chardet
 filename='a'
+
+def get_file_encoding(file_path):                   #利用chardet得到目标文件内的编码格式（是猜的，有可能错）
+    with open(file_path, 'rb') as f:
+        result = chardet.detect(f.read())
+    return result['encoding']
+
 def file_check(file_name='英语单词记录.md'):
     
     exist=0
@@ -19,7 +25,7 @@ def file_check(file_name='英语单词记录.md'):
             word_file_exist=1
             break
     if word_file_exist==1:
-        with open(word_file_dir, 'r') as file:      #若存在则读取
+        with open(word_file_dir, 'r',encoding='GBK') as file:      #若存在则读取
             try:
                 line = file.readline()
                 '''

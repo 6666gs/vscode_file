@@ -28,7 +28,7 @@ while True:
         print('单词记录文件缺失！！\n请补充单词文件绝对路径\n')
         new_dir=input('单词文件绝对路径：')
         word_file_name=os.path.join(os.path.dirname(__file__),'单词路径.txt')
-        with open(word_file_name, 'w') as file:
+        with open(word_file_name, 'w',encoding='GBK') as file:
             file.write(new_dir)
         fi.update_filename(new_dir)     #更新全局变量
         if os.path.exists(fi.filename):

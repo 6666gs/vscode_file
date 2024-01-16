@@ -69,7 +69,7 @@ def read_from_date(date):            #获取date日期中的单词名单，输�
     
     date.replace('/','\/')
     lines=[1]
-    with open(fi.filename, 'r') as file:
+    with open(fi.filename, 'r',encoding=fi.get_file_encoding(fi.filename)) as file:
         line = file.readline()
         on=0
         while line:

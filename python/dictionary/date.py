@@ -31,7 +31,7 @@ def get_date_content():            #获取date日期中的单词名单，输出�
     
     
     print(fi.filename)
-    with open(fi.filename, 'r') as file:
+    with open(fi.filename, 'r',encoding=fi.get_file_encoding(fi.filename)) as file:
         line = file.readline()
         
         while line:
