@@ -65,7 +65,7 @@ def filter_string(text):             #过滤text内容
     #filtered_text=re.sub('\s',"",text)
     return filtered_text
 
-def read_from_date(date):            #获取date日期中的单词名单，输出为列表
+def read_from_date(date):            #获取date日期中的单词名单，输出为列表，date为具体到某一天
     
     date.replace('/','\/')
     lines=[1]

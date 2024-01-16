@@ -22,7 +22,7 @@ def filter_string(text,content):             #过滤text内容
     filtered_text=re.sub(r'\n',"",filtered_text)         #过滤掉\n
     return filtered_text
 
-def get_date_content():            #获取date日期中的单词名单，输出为列表
+def get_date_content():            #获取目录，返回years
     
     years=[]
     num_year=0
