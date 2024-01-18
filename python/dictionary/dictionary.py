@@ -14,42 +14,57 @@ import file as fi
 
 输出格式：列表：[word,含义的数量,含义1,含义2,...]
 '''
-def get_CN(word):
+def get_CN(word):                    #返回的dic为列表[word,音标数量,(音标1),(音标2),含义的数量,含义1,含义2,...]
     root_url = 'https://www.youdao.com/result?word='
     url = root_url +  word + '&lang=en' # 拼接URL
     response = requests.get(url)
+    dic=[word]
     # 检查请求是否成功
     if response.status_code == 200:
         # 使用BeautifulSoup解析HTML内容
         soup = BeautifulSoup(response.text, 'html.parser')
-        #搜索单词释义
-        target_element = soup.find('ul', class_='basic')
+        target_element = soup.find('div', class_='phone_con')
         if target_element:
-            meanings = target_element.find_all(class_='word-exp')
-            dic=[word]
+            meanings = target_element.find_all('div',class_='per-phone')
+            
             for i in range(len(meanings)):
                 dic.append(meanings[i].get_text())     
                 
             dic.insert(1,i+1)
-            return dic   #返回的dic为列表[word,含义的数量,含义1,含义2,...]
+            num_pre=len(dic)
+        else:
+            dic.append(0)  
+            num_pre=len(dic)
+        
+        #搜索单词释义
+        target_element = soup.find('ul', class_='basic')
+        if target_element:
+            
+            meanings = target_element.find_all(class_='word-exp')
+            
+            for i in range(len(meanings)):
+                dic.append(meanings[i].get_text())     
+                
+            dic.insert(num_pre,i+1)
+            return dic   #返回的dic为列表[word,音标数量,(音标1),(音标2),含义的数量,含义1,含义2,...]
         else:
             #未找到直接相关的单词，开始搜索短语
             target_element = soup.find('div', class_='webPhrase')
             if target_element:
                 meanings = target_element.find_all('li',class_='mcols-layout')
-                dic=[word]
+                
                 for i in range(len(meanings)):
                     dic.append(filter_string(meanings[i].get_text()))     
                     
-                dic.insert(1,i+1)
+                dic.insert(num_pre,i+1)
                 return dic
             else:
                 #未找到短语，搜寻网络翻译结果
                 target_element = soup.find('p', class_='trans-content')
                 if target_element:
-                    dic=[word]
+                    
                     dic.append(filter_string(target_element.get_text()))         
-                    dic.insert(1,1)
+                    dic.insert(num_pre,1)
                     return dic
                 else:
                     return '######未找到单词或短语或网络释义：'+word

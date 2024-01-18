@@ -41,17 +41,17 @@ while True:
     years=da.get_date_content()
     num=len(years)
     os.system('cls')
-    print('*'*30)
-    print('*'*30+'\n')
-    print(Fore.BLUE+' '*7+'单词记录查询系统\n')
-    print('*'*30)
-    print('*'*30)
-    print('\n'+'='*30)
+    print('*'*50)
+    print('*'*50+'\n')
+    print(Fore.BLUE+' '*17+'单词记录查询系统\n')
+    print('*'*50)
+    print('*'*50)
+    print('\n'+'='*50)
     print('年份如下：')
-    print('='*30)
+    print('='*50)
     for i in range(len(years)):
         print(Fore.GREEN + years[i].name)
-    print('='*30)
+    print('='*50)
     year=input('请输入要查询的年份:(按下q以退出)\n')
     if year == 'q':
         break
@@ -69,18 +69,18 @@ while True:
                 os.system('cls')
                 months=years[index_year].months
                 num=years[index_year].months_num
-                print('*'*30)
-                print('*'*30+'\n')
-                print(Fore.BLUE+' '*7+'单词记录查询系统\n')
-                print('*'*30)
-                print('*'*30)
-                print('\n'+'='*30)
+                print('*'*50)
+                print('*'*50+'\n')
+                print(Fore.BLUE+' '*17+'单词记录查询系统\n')
+                print('*'*50)
+                print('*'*50)
+                print('\n'+'='*50)
                 print('目标年份：'+year)
                 print('月份如下：')
-                print('='*30)
+                print('='*50)
                 for i in range(num):
                     print(Fore.GREEN + months[i].name)
-                print('='*30)
+                print('='*50)
                 month=input('请输入要查询的月份:(只输入月)(按下q以退出)\n')
                 if month =='q':
                     break
@@ -99,18 +99,18 @@ while True:
                             os.system('cls')
                             days=months[index_month].days
                             num=months[index_month].days_num
-                            print('*'*30)
-                            print('*'*30+'\n')
-                            print(Fore.BLUE+' '*7+'单词记录查询系统\n')
-                            print('*'*30)
-                            print('*'*30)
-                            print('\n'+'='*30)
+                            print('*'*50)
+                            print('*'*50+'\n')
+                            print(Fore.BLUE+' '*17+'单词记录查询系统\n')
+                            print('*'*50)
+                            print('*'*50)
+                            print('\n'+'='*50)
                             print('目标月份：'+month)
                             print('日期如下：')
-                            print('='*30)
+                            print('='*50)
                             for i in range(num):
                                 print(Fore.GREEN + days[i])
-                            print('='*30)
+                            print('='*50)
                             day=input('请输入要查询的日期:(只输入天)(按下q以退出)\n')
                             if day =='q':
                                 break
@@ -126,18 +126,24 @@ while True:
                                     input('未找到目标日期，按下enter返回。。。')
                                 else:
                                     content_word=dic.read_from_date(day)
-                                    print('='*30)
+                                    print('='*50)
                                     print('\n')
                                     for i in range(len(content_word)):
+                                        #查询content_word[i]的释义
                                         dic_temp=dic.get_CN(content_word[i])
-                                        if isinstance(dic_temp,str):
+                                        if isinstance(dic_temp,str):             #dic_temp为字符串，即未找到单词或短语
                                             print(Fore.GREEN + dic_temp,end='')
-                                        else:
-                                            print(Fore.GREEN + dic_temp[0],end='')
+                                        else:                                    #dic_temp为列表
+                                            print(Fore.GREEN +'\033[1m'+ dic_temp[0]+'\033[0m',end='')
                                             print(' '*(25-len(dic_temp[0])),end='')
-                                            io=2
+                                            if dic_temp[1]!=0:                 #打印音标
+                                                for o in range(dic_temp[1]):
+                                                    print(Fore.MAGENTA + dic_temp[o+2],end='     ')
+                                                print('')
+                                                print(' '*25,end='')
+                                            io=dic_temp[1]+3
                                             
-                                            while io<len(dic_temp):
+                                            while io<len(dic_temp):            #打印含义
                                                 print(Fore.BLUE + dic_temp[io],end='')
                                                 io=io+1
                                                 if io >=len(dic_temp):
