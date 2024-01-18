@@ -101,9 +101,5 @@ def read_from_date(date):            #获取date日期中的单词名单，输�
             
             line = file.readline()
     del lines[0]
-    for o in range(len(lines)):
-        if lines[o]== '':
-            del lines[o]
-            
-    #print(lines)  
+    lines=[i for i in lines if i!='']   #列表推导式太优雅了 桀桀桀
     return lines
