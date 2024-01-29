@@ -52,3 +52,6 @@ def update_filename(fi):       #更新全局变量filename
     global filename
     filename=fi
     return filename
+
+path=os.path.dirname(__file__)
+print(path)

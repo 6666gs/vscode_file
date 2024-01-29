@@ -25,13 +25,18 @@ def compress_image(infile, outfile='', mb=500, step=10, quality=80):
         o_size = os.path.getsize(outfile)/1024
     return outfile, os.path.getsize(infile)/1024,os.path.getsize(outfile)/1024        
 
-infile_path="D:/vscode_file/vscode_file/python/image_compress/infile"           #输入图片文件夹
-outfile_path="D:/vscode_file/vscode_file/python/image_compress/outfile"         #输出图片文件夹
+path=os.path.dirname(__file__)
+
+infile_path=path+"\infile"           #输入图片文件夹
+outfile_path=path+"\outfile"         #输出图片文件夹
+print(infile_path)
 files=os.listdir(infile_path)                           #得到指定文件夹中全部文件名（默认没有子文件夹）
 print(files)
+max_length=len(max(files))
 for num,file in enumerate(files):
     infile=infile_path+'/'+file
     outfile=outfile_path+'/'+os.path.splitext(file)[0]+'.jpeg'
     a,b,c=compress_image(infile,outfile)
-    print(num+1,':',a,'    ',b,'    ',c)
+    op=max_length-len(file)+5
+    print(num+1,':',a,' '*op,round(b,3),'kb','    ',round(c,3),'kb')
 print('all over!!')
