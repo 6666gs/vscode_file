@@ -25,13 +25,17 @@ def get_CN(word):                    #返回的dic为列表[word,音标数量,(�
         soup = BeautifulSoup(response.text, 'html.parser')
         target_element = soup.find('div', class_='phone_con')
         if target_element:
-            meanings = target_element.find_all('div',class_='per-phone')
             
-            for i in range(len(meanings)):
-                dic.append(meanings[i].get_text())     
-                
-            dic.insert(1,i+1)
-            num_pre=len(dic)
+            meanings = target_element.find_all('div',class_='per-phone')
+            if meanings:
+                for i in range(len(meanings)):
+                    dic.append(meanings[i].get_text())     
+                    
+                dic.insert(1,i+1)
+                num_pre=len(dic)
+            else:
+                dic.append(0)  
+                num_pre=len(dic)
         else:
             dic.append(0)  
             num_pre=len(dic)
@@ -42,11 +46,14 @@ def get_CN(word):                    #返回的dic为列表[word,音标数量,(�
             
             meanings = target_element.find_all(class_='word-exp')
             
-            for i in range(len(meanings)):
-                dic.append(meanings[i].get_text())     
+            if meanings:
+                for i in range(len(meanings)):
+                    dic.append(meanings[i].get_text())     
+                    
+                dic.insert(num_pre,i+1)
+                return dic   #返回的dic为列表[word,音标数量,(音标1),(音标2),含义的数量,含义1,含义2,...]
+            
                 
-            dic.insert(num_pre,i+1)
-            return dic   #返回的dic为列表[word,音标数量,(音标1),(音标2),含义的数量,含义1,含义2,...]
         else:
             #未找到直接相关的单词，开始搜索短语
             target_element = soup.find('div', class_='webPhrase')
@@ -103,3 +110,6 @@ def read_from_date(date):            #获取date日期中的单词名单，输�
     del lines[0]
     lines=[i for i in lines if i!='']   #列表推导式太优雅了 桀桀桀
     return lines
+
+
+get_CN('analogously')
