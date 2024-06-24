@@ -82,3 +82,11 @@ html body img[alt="90%"] {width: 90%;}
 ---
 ### 6、预览格式中高亮内容可以显示，输出pdf中没有高亮内容
 看[网址](https://blog.csdn.net/RP123123123/article/details/118113026)
+
+
+### 7、哪里负责markdown粘贴照片时的默认目录以及粘贴格式？
+看[网址](https://www.cnblogs.com/mazy-699/p/18145443)
+
+简答：Paste image
+
+需要注意，这个插件自动插入的是png格式的

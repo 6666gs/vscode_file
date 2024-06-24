@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-def compress_image(infile, outfile='', mb=500, step=10, quality=80):
+def compress_image(infile, outfile='', mb=2000, step=10, quality=80):
     """不改变图片尺寸压缩到指定大小
     :param infile: 压缩源文件
     :param outfile: 压缩文件保存地址，为jpeg格式
